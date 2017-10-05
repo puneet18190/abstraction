@@ -1,0 +1,113 @@
+<% @page_title = "Withdraw" %>
+<%= link_to("<< Back to withdrawal", {:action => 'withdraw'}, :class => 'back-link') %>
+
+
+
+
+
+<% if params[:type] == 'paypal' %>
+<% @text_area_info = "PayPal email address" %>
+<h1>PayPal</h1>
+Please enter PayPal email address where you want funds transferred to.
+<br>
+
+<% elsif  params[:type] == 'online_banking'%>
+<% @text_area_info = "Banking info" %>
+<h1>Online banking</h1>
+
+Please insert the following information into the text box: <br>
+* Bank name<br>
+* Account number<br>
+* Account name (name of person who owns account)<br>
+<br>
+Withdrawal can take up to 72 hours, and longer if a weekend interrupts the payment.
+<br>
+
+<% elsif  params[:type] == 'in_person_cash'%>
+<% @text_area_info = "Address in London" %>
+<h1>In person cash payment</h1>
+Meet up in person and receive cash payment.<br>
+An address in London is required for meeting.<br>
+
+
+<% elsif  params[:type] == 'in_person_delivery'%>
+<% @text_area_info = "Address for your door" %>
+<h1>Delivery to door</h1>
+This method allows you to receive money straight to your door. <br>
+If there's a doorbell, someone will press it and ask for the correct person<br>
+to receive the payment.<br><br>
+
+Please enter the address where you want the cash delivered on the door.<br>
+It should be possible to find the address using Google maps.<br>
+<br>
+
+<% elsif  params[:type] == 'cash_in_mail'%>
+<% @text_area_info = "Address for your mail" %>
+<h1>Receive cash in mail</h1>
+This method is using a letter and a stamp. You'll get a letter in the mail with notes.<br>
+Please enter the mail address where you want cash delivered. <br>
+Please only withdraw amounts equal to notes, as coins are not good to ship in mail.<br>
+Any funds that cannot be paid in notes will be returned to your wallet.
+<br>
+
+<% elsif  params[:type] == 'bitcoin'%>
+<% @text_area_info = "Bitcoin address" %>
+<h1>Bitcoin</h1>
+Bitcoin is a widely used method for payment online, and using this method<br>
+you'll get bitcoins sent to your bitcoin wallet.<br>
+Please enter your Bitcoin address. Minimum for Bitcoin withdrawal is 10 punds, <br>
+due to transaction fees, which can often be 1 pund per transaction.
+<br>
+
+<% elsif  params[:type] == 'ethereum'%>
+<% @text_area_info = "Ethereum address" %>
+<h1>Ethereum</h1>
+Please enter your Ethereum address.
+<br>
+
+<% elsif  params[:type] == 'litecoin'%>
+<% @text_area_info = "Litecoin address" %>
+<h1>Litecoin</h1>
+Please enter your Litecoin address.
+<br>
+
+<% elsif  params[:type] == 'suggest_new'%>
+<% @text_area_info = "Information you'd like to share" %>
+<h1>Suggest new type of payment</h1>
+If you have a suggestion for a payment method we should <br>
+support, please enter that information here.
+<br>
+<% end %>
+<br>
+
+
+
+<%= form_for(:withdrawal_request, :url =>{:action => 'put_withdrawal_request', :type => params[:type]}) do |f| %>
+<table>
+		<% unless params[:type] == 'suggest_new' %>
+			<tr>
+				<th>Balance</th>
+				<th><%= @balance %></th>
+			</tr>
+			<tr>
+				<th>Amount to withdraw</th>
+				<th><%= f.text_field(:text_amo) %></th>
+			</tr>
+		<%end%>
+		<tr>
+			<th><%= @text_area_info %></th>
+			<th><%= f.text_area(:information, size: "35x6") %></th>
+		</tr>
+
+		<tr>
+			<th></th>
+			<th>
+				<div class="form-buttons">
+					<%= submit_tag("Start withdrawal process") %>
+				</div>
+			</th>
+		</tr>
+		
+	</table>
+
+<%end%>

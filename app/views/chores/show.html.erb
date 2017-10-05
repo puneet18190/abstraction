@@ -1,0 +1,53 @@
+<% @page_title = "Show chore" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class ="chores show">
+	<h2>Show chores</h2>
+
+	<table summary = "Chore detail view">
+		<tr>
+			<th>Title</th>
+			<th><%= @chore.title%></th>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<th><%= @chore.description%></th>
+		</tr>
+		<tr>
+			<th>Price</th>
+			<% conv = Converter.new %>
+			<th><%= conv.to_s(@chore.price) %></th>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<th><%= @chore.address%></th>
+		</tr>
+		<tr>
+			<th>Work request</th>
+			<th><%= @chore.workRequest%></th>
+		</tr>
+		<tr>
+			<th>User id hiring</th>
+			<th><%= @chore.userIDHiring_id%></th>
+		</tr>
+		<tr>
+			<th>Created at</th>
+			<th><%= @chore.created_at%></th>
+		</tr>
+		<tr>
+			<th>Updated at</th>
+			<th><%= @chore.updated_at%></th>
+		</tr>
+
+		<tr></tr>
+		<tr></tr>
+
+		<% @chore.work_offers.each do |w| %>
+
+		<tr>
+			<th>Offer with id</th>
+			<th><%= w.id %></th>
+		</tr>
+		<% end %>
+	</table>
+</div>

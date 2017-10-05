@@ -1,0 +1,39 @@
+<% @page_title = "Display my work" %>
+<%= link_to("<< Back to home", {:controller => 'home', :action => 'index'}, :class => 'back-link') %>
+
+<div class="chores index">
+	<h2>The work you have selected to do</h2>
+
+
+	<table class = "listing" summary = "Chores list">
+		<tr class = "header">
+			<th>Price</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Address</th>
+			<th>Status work</th>
+
+			<th>Actions</th>
+		</tr>
+		<% conv = Converter.new %>
+		<% @myOffers.each do |c| %>
+			<% sel = @choresMap[c] %>
+			<tr>
+				<td><%=conv.to_s(sel.price) %> </td>
+				<td><%=sel.title %> </td>
+				<td><%=sel.description %> </td>
+				<td><%=sel.address %> </td>
+				<td><%=@statusMap[c] %> </td>
+				
+				<% if @statusMap[c] == "Work offer submitted" %>
+					<td class="actions">
+						<%= link_to("Mark complete", {:action => 'mark_work_complete', :id => c.id, :class => 'action show'}) %>
+					</td>
+				<%end%>
+
+			</tr>
+		<% end %>
+		
+	</table>
+
+</div>

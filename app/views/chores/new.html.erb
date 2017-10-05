@@ -1,0 +1,39 @@
+<% @page_title = "New chore" %>
+<%= link_to("<< Back to home", {:controller => 'home', :action => 'index'}, :class => 'back-link') %>
+&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
+<%= link_to("See my existing chores >>", {:action => 'index'}) %>
+
+
+<div class ="chores new">
+	<h2>Please fill in details of the work you want done</h2>
+
+	<%= form_for(:chore, :url =>{:action => 'create'}) do |f| %>
+
+	<table summary = "Chore form fields">
+		<tr>
+			<th>Title</th>
+			<th><%= f.text_field(:title) %></th>
+			<th>The first thing people looking for chores sees</th>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<th><%= f.text_field(:description) %></th>
+			<th>Description with more details of the chore</th>
+		</tr>
+		<tr>
+			<th>Price</th>
+			<th><%= f.text_field(:text_price)%> </th>
+			<th>The price you're willing to pay</th>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<th><%= f.text_field(:address)%> </th>
+			<th>The address where you want the work done</th>
+		</tr>
+	</table>
+
+	<div class = "form-buttons">
+		<%= submit_tag("Create chore") %>
+	</div>
+	<%end%>
+</div>

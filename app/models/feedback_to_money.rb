@@ -1,0 +1,2 @@
+class FeedbackToMoney < ApplicationRecord
+end

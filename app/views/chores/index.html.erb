@@ -1,0 +1,37 @@
+<% @page_title = "Chores index" %>
+<%= link_to("<< Back to new chore", {:action => 'new'}) %>
+
+<div class="body">
+	<h2>Chores</h2>
+
+
+	<table class = "listing" summary = "Chores list">
+		<tr class = "header">
+			<th>&nbsp;</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Address</th>
+			<th>Actions</th>
+		</tr>
+		<% conv = Converter.new %>
+		<% @chores.each do |c| %>
+		<tr>
+			<td></td>
+			<td><%=c.title %> </td>
+			<td><%=c.description %> </td>
+			<td><%=conv.to_s(c.price) %> </td>
+			<td><%=c.address %> </td>
+			
+
+			<td class="actions">
+				<%= link_to("Show", {:action => 'show', :id => c.id, :class => 'action show'}) %>
+				<%= link_to("Edit", {:action => 'edit', :id => c.id, :class => 'action edit'}) %>
+				<%= link_to("Delete", {:action => 'delete', :id => c.id, :class => 'action delete'}) %>
+
+			</td>
+		</tr>
+		<% end %>
+	</table>
+
+</div>

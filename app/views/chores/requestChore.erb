@@ -1,0 +1,14 @@
+<% @page_title = "Request chore" %>
+<%= link_to("<< Back to make money", {:action => 'makeMoney'}, :class => 'back-link') %>
+
+<div>
+	<h2>Send work offer</h2>
+
+	<%= form_tag(:action => 'send_work_offer', :chore_id => @chore.id) do %>
+
+		<input type = "text" name = "message_text">
+		<br>
+
+		<%= submit_tag("Send work offer and message") %>
+	<%end%>
+</div>

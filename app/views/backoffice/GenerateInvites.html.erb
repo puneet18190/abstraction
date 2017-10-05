@@ -1,0 +1,27 @@
+<div >
+	<h2>Create new invite</h2>
+
+	<%= form_for(:invite, :url =>{:action => 'save_invite'}) do |f| %>
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th><%= f.text_field(:title) %></th>
+		</tr>
+		<tr>
+			<th>Comment</th>
+			<th><%= f.text_area(:comment) %></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th><div class = "form-buttons">
+					<%= submit_tag("Save invite") %>
+				</div>
+			</th>
+	
+		</tr>
+		
+	</table>
+
+	<%end%>
+</div>

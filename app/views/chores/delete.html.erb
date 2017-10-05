@@ -1,0 +1,35 @@
+<% @page_title = "Delete chores" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class ="chores show">
+	<h2>Are you sure you want to delete this record?</h2>
+
+	<%= form_for(:subject, :url => {:action => 'destroy', :id => @chore.id}) do |f| %>
+
+	<table summary = "Chore detail view">
+		<tr>
+			<th>Title</th>
+			<th><%= @chore.title%></th>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<th><%= @chore.description%></th>
+		</tr>
+		<tr>
+			<th>Price</th>
+			<th><%= @chore.price%></th>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<th><%= @chore.address%></th>
+		</tr>
+		
+	</table>
+
+	<div class="form-buttons">
+		<%= submit_tag("Delete chore") %>
+	</div>
+
+	<%end%>
+
+</div>

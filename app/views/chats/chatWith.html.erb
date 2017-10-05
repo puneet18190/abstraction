@@ -1,0 +1,47 @@
+<% @page_title = "Chat with" %>
+<%= link_to("<< Back to chats", {:action => 'myChats'}) %>
+
+<div class="chores index">
+	<h2>Chats with other users</h2>
+
+	<table class = "listing" summary = "Chats list">
+		<tr class = "header">
+			
+			<th>Text</th>
+			<th>Time</th>
+			<th>Sender</th>
+			
+		</tr>
+		<% @messages.each do |m| %>
+			<tr >
+				<th><%= m.message %></th>
+				<th><%= m.created_at %></th>
+				
+				<th><%= @sender[m] %></th>
+			</tr>
+		<%end%>
+	</table>
+</div>
+
+
+<div>
+	<h2>Send message</h2>
+
+	<%= form_for(:message, :url =>{:action => 'sendMessage', :chat_id => @chat_id}) do |f| %>
+
+	<table summary = "Message form fields">
+		<tr>
+			<th>Message</th>
+			<th><%= f.text_field(:message) %></th>
+			<th><%= :chat_id %></th>
+			<th><%= @chat_id %></th>
+
+		</tr>
+		
+	</table>
+
+	<div class = "form-buttons">
+		<%= submit_tag("Send message") %>
+	</div>
+	<%end%>
+</div>

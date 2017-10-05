@@ -1,0 +1,44 @@
+<% @page_title = "Make money" %>
+<%= link_to("<< Back to home", {:controller => 'home', :action => 'index'}, :class => 'back-link') %>
+
+<div class="chores index">
+	<h2>Select chore you want to do to make money</h2>
+
+
+	<table class = "listing" summary = "Chores list">
+		<tr class = "header">
+			<th>&nbsp;</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Address</th>
+			<th>Actions</th>
+		</tr>
+		<% conv = Converter.new %>
+		<% dist = ValueDistributer.new %>
+
+		
+
+		<% @choresRelevant.each do |c| %>
+		<tr>
+			<td></td>
+			<td><%=c.title %> </td>
+			<td><%=c.description %> </td>
+			<% priceToDisp = c.price * (100 - dist.percentage_fees) / 100 %>
+			<td><%=conv.to_s(priceToDisp) %> </td>
+			<td><%=c.address %> </td>
+			
+
+			<td class="actions">
+				<%= link_to("Show", {:action => 'show', :id => c.id, :class => 'action show'}) %>
+				<%= link_to("Request this chore", {:action => 'requestChore', :id => c.id, :class => 'action edit'}) %>
+				<% addressLink = "https://www.google.com/maps/place/" + c.address %>
+				<%= link_to('GoogleMaps' , addressLink, target: :_blank) %>
+				<%#= link_to("Delete", {:action => 'delete', :id => c.id, :class => 'action delete'}) %>
+
+			</td>
+		</tr>
+		<% end %>
+	</table>
+
+</div>

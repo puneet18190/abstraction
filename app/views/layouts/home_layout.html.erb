@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Abstraction | <%= @page_title %></title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+    	<div id="header">
+    		<h1>Abstraction</h1>
+    	</div>
+    	<div id="main">
+    		<% if !flash[:notice].blank? %>
+    			<div class="notice">
+    				<%= flash[:notice] %>
+    			</div>
+    		<%end%>
+
+    		<div id="content">
+  	    	<%= yield %>
+  		  </div>
+    	</div>
+  		<div id="footer">
+      	<p id=:"copyright">&copy; Abstraction.website</p>
+        <p>Version 0.4.1 c110</p>
+      </div>	
+    </div>
+  </body>
+</html>

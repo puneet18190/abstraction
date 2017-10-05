@@ -1,0 +1,34 @@
+
+<meta name = "viewport" content = "width = 940">
+<h1>Home</h1>
+<% @page_title = "Home" %>
+
+<div id="header">
+
+	<p>You are logged in,  <%= link_to(session[:username] , {:controller =>'reputation', :action => 'index'}) %></p>
+	
+</div>
+
+<%= link_to('Make money' , {:controller =>'chores', :action => 'makeMoney'}) %>
+
+<br>
+<%= link_to('Get help' , {:controller => 'chores', :action => 'new'}) %>
+<br>
+<%#= link_to('Chats' , {:action => 'chats', :magic => @magic}) %>
+<%= link_to('Chats' , {:controller =>'chats', :action => 'myChats'}) %>
+<br>
+<%#= link_to('View work I have done for others' , {:action => 'viewMyWork'}) %>
+<%= link_to('Display my work for others' , {:controller => 'chores', :action => 'display_my_work'}) %>
+<br>
+<%#= link_to('View work others have done for me' , {:action => 'viewCompletedWork'}) %>
+<%= link_to("Display other's work for me" , {:controller => 'chores', :action => 'display_completed_work'}) %>
+<br>
+<%#= link_to('Wallet' , {:action => 'wallet'}) %>
+<%= link_to('Wallet' , {:controller => 'wallet', :action => 'transactions'}) %>
+<br><br>
+<%= link_to('Log out' , {:controller => 'access', :action => 'logout'}) %>
+<br>
+<p>Invite others using the code <b> <%= session[:invite_code] %> </b><br>
+Try to get as many as possible to use your code when they sign up, <br> 
+you'll be rewarded with a percentage of the revenue they generate.</p>
+<br><br>

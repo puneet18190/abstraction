@@ -1,0 +1,19 @@
+<% @page_title = "Withdraw" %>
+<%= link_to("<< Back to transactions", {:action => 'transactions'}, :class => 'back-link') %>
+
+
+<h1>Withdraw money from your wallet</h1>
+
+Choose your method for withdrawing money: <br>
+<%= link_to("PayPal", 							{:action => 'withdraw_method', :type => 'paypal'}) %><br>
+<%= link_to("Online banking", 					{:action => 'withdraw_method', :type => 'online_banking'}) %><br>
+<%= link_to("In-person meetup for cash payment",{:action => 'withdraw_method', :type => 'in_person_cash'}) %><br>
+<%= link_to("In-person cash delivery to door", 	{:action => 'withdraw_method', :type => 'in_person_delivery'}) %><br>
+<%= link_to("Receive cash in mail", 			{:action => 'withdraw_method', :type => 'cash_in_mail'}) %><br>
+<%= link_to("Bitcoin", 							{:action => 'withdraw_method', :type => 'bitcoin'}) %><br>
+<%= link_to("Ethereum", 						{:action => 'withdraw_method', :type => 'ethereum'}) %><br>
+<%= link_to("Litecoin", 						{:action => 'withdraw_method', :type => 'litecoin'}) %><br>
+<%= link_to("Suggest other payment types", 		{:action => 'withdraw_method', :type => 'suggest_new'}) %><br>
+
+
+	

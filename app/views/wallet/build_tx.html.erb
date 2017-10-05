@@ -1,0 +1,28 @@
+<% @page_title = "Create transaction" %>
+<%= link_to("<< Back to transactions", {:action => 'transactions'}, :class => 'back-link') %>
+<h1>Build transaction</h1>
+
+User ID that can be used for receiving tx: <br>
+<h2> <%= session[:user_id] %> </h2>
+You have a balance of <%= @balance %>
+
+<%= form_for(:transaction, :url =>{:action => 'send_tx'}) do |f| %>
+
+<table>
+		<tr>
+			<th>User id to send to</th>
+			<th><%= f.text_field(:to_user) %></th>
+			<th>A number, similar to the one you see for yourself above</th>
+		</tr>
+		<tr>
+			<th>Amount</th>
+			<th><%= f.text_field(:text_amo) %></th>
+			<th>The amount you wish to send</th>
+		</tr>
+		<% hidden_field(:from_user, session[:user_id]) %>
+</table>
+
+<div class = "form-buttons">
+		<%= submit_tag("Send transaction") %>
+</div>
+<%end%>

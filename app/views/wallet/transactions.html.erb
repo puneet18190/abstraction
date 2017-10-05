@@ -1,0 +1,34 @@
+<% @page_title = "Transactions" %>
+<%= link_to("<< Back to home", {:controller => 'home', :action => 'index'}, :class => 'back-link') %>
+
+<br><br>
+<%= link_to('Send transaction' , {:action => 'build_tx'}) %>
+<br>
+<%= link_to('Withdraw' , {:action => 'withdraw'}) %>
+<br>
+<%= link_to('Deposit' , {:action => 'deposit'}) %>
+<h2> Wallet balance is <%= @balance %></h2>
+
+<table summary = "Chore form fields">
+		<tr>
+			<th>Amount</th>
+			<th>Time</th>
+			<th>From</th>
+			<th>To</th>
+		</tr>
+		<% @txes.each do |t| %>
+		<tr>
+			<% conv = Converter.new %>
+			<% if t.to_user == session[:user_id] %>
+				<% symbol = "+" %>
+				<th align="right"><font color="#00008B"><%= symbol + conv.to_s(t.amount) %></font></th>
+			<% else symbol = "-" %>
+				<th align="right"><font color="#FF0000"><%= symbol + conv.to_s(t.amount) %></font></th>
+			<% end %>
+			
+			<th><font color="#BFBFBF"><%= t.created_at %></font></th>
+			<th><%= t.from_user %></th>
+			<th><%= t.to_user %></th>
+		</tr>
+		<%end%>
+</table>

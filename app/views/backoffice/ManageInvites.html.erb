@@ -1,0 +1,36 @@
+
+<div >
+	<h2>Manage invites</h2>
+	<%= link_to("<< Back to backoffice", {:action => 'index'}) %><br><br>
+	<%= link_to("Generate invites", :action => 'GenerateInvites') %>
+
+
+	<table>
+		<tr class = "header">
+			<th>&nbsp;</th>
+			<th>Title</th>
+			<th>Comment</th>
+			<th>Code</th>
+
+		</tr>
+
+		<% @invites.each do |c| %>
+		<tr>
+			<td></td>
+			<td><%=c.title %> </td>
+			<td><%=c.comment %> </td>
+			<td><%=c.invite_code %> </td>
+			
+
+			<td class="actions">
+				<%= link_to("Show", {:action => '#', :id => c.id, :class => 'action show'}) %>
+				<%= link_to("Edit", {:action => '#', :id => c.id, :class => 'action edit'}) %>
+				<%#= link_to("Delete", {:action => 'delete', :id => c.id, :class => 'action delete'}) %>
+
+			</td>
+		</tr>
+		<% end %>
+		
+	</table>
+
+</div>

@@ -1,0 +1,2 @@
+class AbTest < ApplicationRecord
+end

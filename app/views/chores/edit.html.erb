@@ -1,0 +1,36 @@
+<% @page_title = "Edit chore" %>
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class ="chores edit">
+	<h2>Update chore</h2>
+
+	<%= form_for(:chore, :url =>{:action => 'update', :id => @chore.id}) do |f| %>
+
+	<table summary = "Chore form fields">
+		<tr>
+			<th>Title</th>
+			<th><%= f.text_field(:title) %></th>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<th><%= f.text_field(:description) %></th>
+		</tr>
+		<tr>
+			<th>Price</th>
+			<th><%= f.text_field(:price)%> </th>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<th><%= f.text_field(:address)%> </th>
+		</tr>
+		<tr>
+			<th>User id hiring</th>
+			<th><%= f.text_field(:userIDHiring_id)%> </th>
+		</tr>
+	</table>
+
+	<div class = "form-buttons">
+		<%= submit_tag("Update chore") %>
+	</div>
+	<%end%>
+</div>
