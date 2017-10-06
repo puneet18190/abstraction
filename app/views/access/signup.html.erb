@@ -1,3 +1,5 @@
+<%
+=begin%>
 <% @page_title = "Sign up" %>
 
 <h1>Sign up</h1>
@@ -21,4 +23,63 @@
 	</div>
 	<%= submit_tag "Sign up", class: "btn btn-primary" %>
 	<%= link_to("Log in", {:action => 'login'}, class: "btn btn-primary") %>
+<%end%>
+<%
+=end%>
+
+<%= form_tag({:action => 'attempt_signup'},{class: "well form-horizontal"}) do %>
+	<fieldset>
+		<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Username</label>  
+		  <div class="col-md-4 inputGroupContainer">
+		  	<div class="input-group">
+		  		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		  		<input  name="username" placeholder="Username" class="form-control" type="text" required="true">
+		    </div>
+		  </div>
+		</div>
+
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label" >Password</label> 
+	    <div class="col-md-4 inputGroupContainer">
+	    	<div class="input-group">
+	  			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	  			<input name="password" placeholder="Password" class="form-control" type="password" required="true">
+	    	</div>
+	  	</div>
+		</div>
+
+     <div class="form-group">
+		  <label class="col-md-4 control-label">E-Mail</label>  
+	    <div class="col-md-4 inputGroupContainer">
+	    	<div class="input-group">
+	      	<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+	  			<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+	    	</div>
+	 	 	</div>
+		</div>
+       
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Signup Code</label>  
+		  <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+		  		<input name="signup_code" placeholder="Signup Code" class="form-control" type="text">
+		    </div>
+		  </div>
+		</div>
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label"></label>
+		  <div class="col-md-4"><br>
+		    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		    <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSign up 
+		    	<span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		    </button>
+		  </div>
+		</div>
+	</fieldset>
 <%end%>

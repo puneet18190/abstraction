@@ -1,3 +1,5 @@
+<%
+=begin%>
 <hr>
 <% @page_title = "Login" %>
 
@@ -12,6 +14,47 @@
 	</div>
 	<%= submit_tag "Log in", class: "btn btn-primary" %>
 	<%= link_to("Sign up", {:action => 'signup'}, class: "btn btn-primary") %>
+<%end%>
+<%
+=end%>
+
+<%= form_tag({:action => 'attempt_login'},{class: "well form-horizontal"}) do %>
+	<fieldset>
+		<legend><center><h2><b>Login</b></h2></center></legend><br>
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Username</label>  
+		  <div class="col-md-4 inputGroupContainer">
+		  	<div class="input-group">
+		  		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		  		<input  name="username" placeholder="Username" class="form-control" type="text" required="true">
+		    </div>
+		  </div>
+		</div>
+
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label" >Password</label> 
+	    <div class="col-md-4 inputGroupContainer">
+	    	<div class="input-group">
+	  			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	  			<input name="password" placeholder="Password" class="form-control" type="password" required="true">
+	    	</div>
+	  	</div>
+		</div>
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label"></label>
+		  <div class="col-md-4">
+		    <a href="/access/signup" class="btn btn-warning signup_btn" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSignup 
+		    	<span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		    </a>
+		    <button type="submit" class="btn btn-warning login_btn" style="float:right">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLogin 
+		    	<span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		    </button>
+		  </div>
+		</div>
+	</fieldset>
 <%end%>
 
 <hr>
@@ -48,3 +91,13 @@ At Abstraction we strongly believe that trade enables win-win situations
 where all parties involved are better off for interacting with each other.
 <br>
 We do not believe the nonsense that trade is a zero-sum game.
+
+<style type="text/css">
+	.signup_btn{
+		width: 48%;
+	}
+
+	.login_btn{
+		width: 48%;
+	}
+</style>
